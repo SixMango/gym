@@ -3,9 +3,11 @@ package com.lanjiao.gym.entity;
 import lombok.Data;
 
 @Data
-public class User {
+public class Opentime {
 
     private Integer id;
-    private String userId;
-    private String userName;
+    private String siteId;
+    private String timeId;
+
+
 }

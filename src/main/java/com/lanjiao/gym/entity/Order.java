@@ -3,9 +3,16 @@ package com.lanjiao.gym.entity;
 import lombok.Data;
 
 @Data
-public class User {
+public class Order {
 
     private Integer id;
+
+
+    private String orderId;
+
+
     private String userId;
-    private String userName;
+
+
+
 }

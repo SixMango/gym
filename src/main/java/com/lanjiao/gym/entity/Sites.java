@@ -3,9 +3,9 @@ package com.lanjiao.gym.entity;
 import lombok.Data;
 
 @Data
-public class User {
+public class Sites {
 
     private Integer id;
-    private String userId;
-    private String userName;
+    private String siteId;
+    private String siteName;
 }

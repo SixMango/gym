@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanjiao.gym.dao.SubsiteMapper">
+  <resultMap id="BaseResultMap" type="com.lanjiao.gym.entity.Subsite">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="subsite_id" jdbcType="VARCHAR" property="subsiteId" />
+    <result column="site_id" jdbcType="VARCHAR" property="siteId" />
+    <result column="sport_id" jdbcType="VARCHAR" property="sportId" />
+    <result column="subsite_description" jdbcType="VARCHAR" property="subsiteDescription" />
+    <result column="subsite_name" jdbcType="VARCHAR" property="subsiteName" />
+    <result column="subsite_price" jdbcType="DOUBLE" property="subsitePrice" />
+  </resultMap>
+
+  <select id="findSubsite" resultMap="BaseResultMap">
+
+    select *  from subsite
+  </select>
+
+</mapper>
