@@ -8,13 +8,13 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Mapper
 @Component
+@Mapper
 public interface UserDao {
 
-    @Select("select * from user where user_id=#{user_id} and user_name=#{user_name}")
-    User findUserByIdAndName(@Param("user_id") String user_id, @Param("user_name") String user_name);
+//    @Select("select * from user where user_id=#{user_id} and user_name=#{user_name}")
+//    User findUserByIdAndName(@Param("user_id") String user_id, @Param("user_name") String user_name);
 
-    @Select("select * from user")
+//    @Select("select * from user")
     List<User> findUserAll();
 }
