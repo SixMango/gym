@@ -1,8 +1,17 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lanjiao.gym.dao.UserMapper">
 
   <select id="findUserAll" resultType="com.lanjiao.gym.entity.User">
+=======
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanjiao.gym.dao.UserDao">
+
+
+    <select id="findUserAll" resultType="com.lanjiao.gym.entity.User">
+>>>>>>> 3098998edf9dba780a0f0c7678dc829b099ab66a
       SELECT * FROM user;
     </select>
 
