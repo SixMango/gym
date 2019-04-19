@@ -32,7 +32,7 @@ public class TokenUtil {
     private String tokenUrl=null;
 
 
-   // @Scheduled(initialDelay = 1000, fixedDelay = 7000*1000 )
+   @Scheduled(initialDelay = 1000, fixedDelay = 7000*1000 )
     public void getToken(){
         //访问微信服务器的地址
         tokenUrl="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="

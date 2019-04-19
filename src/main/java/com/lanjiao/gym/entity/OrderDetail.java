@@ -5,21 +5,14 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class ReservationDetails {
+public class OrderDetail {
 
     private Integer id;
-
-    private String reservationId;
-
-
+    private String orderId;
+    private Date detailTime;
     private String subsiteId;
-
-
-    private Date reservationDate;
-
-
     private String timeId;
-
-    private Time time;
+    private String  siteId;
+    private String sportId;
 
 }

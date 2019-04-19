@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanjiao.gym.dao.TimeDao">
+  <resultMap id="BaseResultMap" type="com.lanjiao.gym.entity.Time">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="time_id" jdbcType="VARCHAR" property="timeId" />
+    <result column="begintime" jdbcType="VARCHAR" property="begintime" />
+    <result column="endtime" jdbcType="VARCHAR" property="endtime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, time_id, begintime, endtime
+  </sql>
+
+  <select id="queryTimes" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from time
+  </select>
+
+</mapper>

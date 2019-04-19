@@ -12,7 +12,7 @@ import java.util.Arrays;
  */
 public class SignUtil {
     // 与接口配置信息中的 Token 要一致
-    private static String token = "dapengniaowechat";
+    private static String token = "qyy";
     /**
      * 验证签名
      * @param signature

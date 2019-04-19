@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanjiao.gym.dao.SportsDao">
+    <resultMap id="BaseResultMap" type="com.lanjiao.gym.entity.Sports">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="sport_id" jdbcType="VARCHAR" property="sportId"/>
+        <result column="sport_name" jdbcType="VARCHAR" property="sportName"/>
+        <result column="sport_image" jdbcType="VARCHAR" property="sportImage"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+       id, sport_id, sport_name,sport_image
+    </sql>
+    <select id="querySports" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sports
+    </select>
+
+    <select id="querySportById" parameterType="Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sports where id =#{id}
+    </select>
+
+    <select id="querySportBySportId" parameterType="String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sports where sport_id=#{sportId}
+    </select>
+
+    <select id="querySportBySportName" parameterType="String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sports where sport_name=#{sportName}
+    </select>
+
+</mapper>

@@ -19,6 +19,7 @@ public enum Error {
     AUTH_ERROR(51000, "auth error");
 
 
+
     private int code;
     private String message;
 

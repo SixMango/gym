@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanjiao.gym.dao.OrderDetailDao">
+  <resultMap id="BaseResultMap" type="com.lanjiao.gym.entity.OrderDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="subsite_id" jdbcType="VARCHAR" property="subsiteId" />
+    <result column="detail_time" jdbcType="DATE" property="detailTime" />
+    <result column="time_id" jdbcType="VARCHAR" property="timeId" />
+    <result column="site_id" jdbcType="VARCHAR" property="siteId" />
+    <result column="sport_id" jdbcType="VARCHAR" property="sportId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id,order_id,subsite_id,detail_time,time_id,site_id,sport_id
+  </sql>
+  <select id="queryOrderDetailBySubsiteIdAndDetailTime"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_detail
+    where subsite_id = #{subsiteId} and detail_time = #{detailTime}
+  </select>
+
+
+  <insert id="insertOrderDetail" parameterType="com.lanjiao.gym.entity.OrderDetail">
+     INSERT  INTO
+     order_detail (order_id,subsite_id,detail_time,time_id,
+     site_id,sport_id)
+     values(
+     #{orderId},#{subsiteId},#{detailTime},#{timeId},#{siteId},#{sportId})
+  </insert>
+</mapper>

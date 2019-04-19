@@ -2,6 +2,8 @@ package com.lanjiao.gym.entity;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class Subsite {
 
@@ -9,9 +11,7 @@ public class Subsite {
 
     private String subsiteId;
 
-
     private String siteId;
-
 
     private String sportId;
 
@@ -20,5 +20,10 @@ public class Subsite {
     private String subsiteName;
 
     private Double subsitePrice;
+
+    private List<ReservationDetails> reservationDetailsList;
+
+    private List<Time> timeList;
+
 
 }

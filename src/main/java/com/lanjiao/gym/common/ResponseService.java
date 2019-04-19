@@ -1,10 +1,14 @@
 package com.lanjiao.gym.common;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.Map;
 
 /**
  * Created by zhangyi on 2017/12/22.
  */
+@Component
 public class ResponseService {
     public Response success(Object result, String msg) {
         return Response.success().setResult(result).setMsg(msg);
