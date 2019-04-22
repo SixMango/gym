@@ -15,10 +15,10 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SitesServiceTest {
+public class SiteServiceTest {
 
     @Autowired
-    private SitesService sitesService;
+    private SiteService siteService;
 
 
     @Test
@@ -28,7 +28,7 @@ public class SitesServiceTest {
         //测试参数
         String[] test = {"#SP01", "#SP05", "abcd"};
         for (int i = 0; i < test.length; i++) {
-            Response response = sitesService.querySitesBySport(test[i]);
+            Response response = siteService.querySitesBySport(test[i]);
             list.add(response);
         }
         PrintResponse.printResponseList(list, test);
@@ -42,7 +42,7 @@ public class SitesServiceTest {
         //测试参数
         String[] test = {"#SP01", "#SP05", "abcd"};
         for (int i = 0; i < test.length; i++) {
-            Response response = sitesService.querySitesBySportId(test[i]);
+            Response response = siteService.querySitesBySportId(test[i]);
             list.add(response);
         }
         PrintResponse.printResponseList(list, test);

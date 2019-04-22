@@ -2,7 +2,7 @@ package com.lanjiao.gym.dao;
 
 import com.alibaba.fastjson.JSONObject;
 import com.lanjiao.gym.entity.OrderDetail;
-import com.lanjiao.gym.entity.ReservationDetails;
+import com.lanjiao.gym.entity.ReservationDetail;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

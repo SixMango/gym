@@ -28,7 +28,7 @@
     <select id="querySubsiteDetailBySiteIdAndSportId" resultMap="subsiteDetail">
         SELECT
          <include refid="subsiteAndRdAndTime"/>
-         from subsite su LEFT JOIN reservation_details rd
+         from subsite su LEFT JOIN reservation_detail rd
           on su.subsite_id =rd.subsite_id
 	   LEFT JOIN time t
 	  on rd.time_id=t.time_id
@@ -43,7 +43,7 @@
         <result column="subsite_description" jdbcType="VARCHAR" property="subsiteDescription"/>
         <result column="subsite_name" jdbcType="VARCHAR" property="subsiteName"/>
         <result column="subsite_price" jdbcType="DOUBLE" property="subsitePrice"/>
-        <collection property="reservationDetailsList" ofType="com.lanjiao.gym.entity.ReservationDetails">
+        <collection property="reservationDetailsList" ofType="com.lanjiao.gym.entity.ReservationDetail">
             <id column="rd_id" jdbcType="INTEGER" property="id" />
             <result column="reservation_id" jdbcType="VARCHAR" property="reservationId" />
             <result column="rd_subsite_id" jdbcType="VARCHAR" property="subsiteId" />

@@ -1,18 +1,9 @@
-package com.lanjiao.gym.wechat.Buttons;
+package com.lanjiao.gym.wechat.button;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.lanjiao.gym.wechat.Buttons.Button;
-import com.lanjiao.gym.wechat.Buttons.ClickButton;
-import com.lanjiao.gym.wechat.Buttons.ViewButton;
-import com.lanjiao.gym.wechat.Buttons.Menu;
-import com.lanjiao.gym.wechat.Buttons.WxMenuUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
-import java.net.URLEncoder;
 
 
 @Component
@@ -35,11 +26,11 @@ public class MenuOpe {
 		String appId =  "wx82140fcfdc9828a2";
 		String redirectUri= "http://gym.ngrok.xiaomiqiu.cn/sports/querySports";
 
-		try {
-			redirectUri = URLEncoder.encode(redirectUri, "UTF-8");
-		}catch (Exception e){
-			System.out.println("转码失败");
-		}
+//		try {
+//			redirectUri = URLEncoder.encode(redirectUri, "UTF-8");
+//		}catch (Exception e){
+//			System.out.println("转码失败");
+//		}
 
 		button11.setUrl(snsapi_userinfo.replace("APPID", appId).replace("REDIRECT_URI", redirectUri));
 

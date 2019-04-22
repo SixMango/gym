@@ -17,8 +17,8 @@ public class UserService extends ResponseService{
     UserDao userDao;
 
 
-    public Response findUserAll(){
-        List<User> list=userDao.findUserAll();
+    public Response findUserList(){
+        List<User> list=userDao.findUserList();
         return success(list,"获取用户列表成功");
     }
 }

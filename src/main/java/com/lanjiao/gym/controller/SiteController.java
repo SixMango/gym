@@ -1,36 +1,31 @@
 package com.lanjiao.gym.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.lanjiao.gym.common.Response;
-import com.lanjiao.gym.common.ResponseService;
-import com.lanjiao.gym.entity.Sites;
-import com.lanjiao.gym.service.SitesService;
-import org.apache.http.protocol.ResponseServer;
+import com.lanjiao.gym.service.SiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/sites")
-public class SitesController {
+public class SiteController {
 
     @Autowired
-    SitesService sitesService;
+    SiteService siteService;
     @RequestMapping(value = "/querySitesBySport")
     public Response querySitesBySport(@RequestBody Map<String, Object> data) {
         String sportId = (String) data.get("sportId");
 
-        Response response = sitesService.querySitesBySport(sportId);
+        Response response = siteService.querySitesBySport(sportId);
         return response;
     }
 
-    @RequestMapping(value = "/querySitesBySportId")
+    @RequestMapping(value = "/querySiteBySportId")
     public Response querySitesBySportId(@RequestBody Map<String, Object> data) {
         String sportId = (String) data.get("sportId");
 
-        Response response = sitesService.querySitesBySportId(sportId);
+        Response response = siteService.querySitesBySportId(sportId);
         return response;
     }
 }

@@ -7,7 +7,6 @@ import com.lanjiao.gym.dao.ReservationDetailsDao;
 import com.lanjiao.gym.dao.SubsiteDao;
 import com.lanjiao.gym.dao.TimeDao;
 import com.lanjiao.gym.entity.OrderDetail;
-import com.lanjiao.gym.entity.ReservationDetails;
 import com.lanjiao.gym.entity.Subsite;
 import com.lanjiao.gym.entity.Time;
 import org.apache.ibatis.annotations.Param;

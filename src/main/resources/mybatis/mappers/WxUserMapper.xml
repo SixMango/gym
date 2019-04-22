@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanjiao.gym.dao.WxUserDao">
+
+    <resultMap id="BaseResultMap" type="com.lanjiao.gym.entity.WxUser">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="openid" jdbcType="VARCHAR" property="openid"/>
+        <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
+        <result column="sex" jdbcType="INTEGER" property="sex"/>
+        <result column="province" jdbcType="VARCHAR" property="province"/>
+        <result column="city" jdbcType="VARCHAR" property="city"/>
+        <result column="country" jdbcType="VARCHAR" property="country"/>
+        <result column="headimgurl" jdbcType="VARCHAR" property="headimgurl"/>
+        <result column="privilege" jdbcType="VARCHAR" property="privilege"/>
+        <result column="unionid" jdbcType="VARCHAR" property="unionid"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+         id,openid,nickname,sex,province,city,country,headimgurl,privilege,unionid
+     </sql>
+
+
+    <select id="findWxUserList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM wxuser
+        <where>
+            <if test="openid!=null">
+                openid = #{openid}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insertWxUser" parameterType="com.lanjiao.gym.entity.WxUser">
+     INSERT  INTO
+     wxUser (openid,nickname,sex,province,city,country,headimgurl,privilege,unionid)
+     values(
+     #{openid},#{nickname},#{sex},#{province},#{city},
+     #{country},#{headimgurl},#{privilege},#{unionid})
+  </insert>
+
+    <update id="updateWxUser" parameterType="com.lanjiao.gym.entity.WxUser">
+        UPDATE wxUser
+         <set>
+             <if test="sex!=null"> sex = #{sex},</if>
+             <if test="province !=null"> province = #{province},</if>
+             <if test="city !=null"> city = #{city},</if>
+             <if test="country !=null"> country = #{country},</if>
+             <if test="headimgurl !=null"> headimgurl = #{headimgurl},</if>
+             <if test="privilege !=null"> privilege = #{privilege},</if>
+             <if test="nickname !=null"> nickname = #{nickname}</if>
+         </set>
+         WHERE openid = #{openid}
+    </update>
+
+</mapper>

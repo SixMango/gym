@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class Sites {
+public class Site {
 
     private Integer id;
     private String siteId;

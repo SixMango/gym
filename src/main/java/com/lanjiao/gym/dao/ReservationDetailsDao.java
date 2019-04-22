@@ -1,6 +1,6 @@
 package com.lanjiao.gym.dao;
 
-import com.lanjiao.gym.entity.ReservationDetails;
+import com.lanjiao.gym.entity.ReservationDetail;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
@@ -12,6 +12,6 @@ import java.util.List;
 @Component
 public interface ReservationDetailsDao {
 
-    List<ReservationDetails> queryReservationDetailsBySubsiteIdAndReservationDate(@Param("subsiteId")String subsiteId, @Param("reservationDate")String reservationDate);
+    List<ReservationDetail> queryReservationDetailsBySubsiteIdAndReservationDate(@Param("subsiteId")String subsiteId, @Param("reservationDate")String reservationDate);
 
 }

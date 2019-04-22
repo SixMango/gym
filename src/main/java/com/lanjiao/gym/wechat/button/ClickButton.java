@@ -1,4 +1,4 @@
-package com.lanjiao.gym.wechat.Buttons;
+package com.lanjiao.gym.wechat.button;
 
 import lombok.Data;
 

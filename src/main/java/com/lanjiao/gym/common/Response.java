@@ -15,7 +15,7 @@ public class Response implements Serializable {
     private String msg;
     private Object result;
 
-    private String sessionId;
+    private String token;
 
     public Response() {
         status = SUCCESS;
@@ -70,12 +70,12 @@ public class Response implements Serializable {
 
     }
 
-    public String getSessionId() {
-        return this.sessionId;
+    public String getToken() {
+        return this.token;
     }
 
-    public Response setSessionId(String sessionId) {
-        this.sessionId = sessionId;
+    public Response setToken(String token) {
+        this.token = token;
         return this;
     }
 }

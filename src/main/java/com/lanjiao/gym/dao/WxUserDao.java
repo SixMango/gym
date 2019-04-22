@@ -1,18 +1,18 @@
 package com.lanjiao.gym.dao;
 
 import com.lanjiao.gym.entity.User;
+import com.lanjiao.gym.entity.WxUser;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
 @Mapper
-public interface UserDao {
+public interface WxUserDao {
 
 
-    List<User> findUserList();
-    int insertUser(User user);
+    List<WxUser> findWxUserList(WxUser wxUser);
+    int insertWxUser(WxUser user);
+    int updateWxUser(WxUser user);
 }

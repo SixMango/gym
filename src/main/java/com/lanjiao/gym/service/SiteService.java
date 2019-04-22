@@ -3,7 +3,7 @@ package com.lanjiao.gym.service;
 import com.lanjiao.gym.common.Response;
 import com.lanjiao.gym.common.ResponseService;
 import com.lanjiao.gym.dao.SitesDao;
-import com.lanjiao.gym.entity.Sites;
+import com.lanjiao.gym.entity.Site;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class SitesService extends ResponseService {
+public class SiteService extends ResponseService {
 
     @Autowired
     private SitesDao sitesDao;
@@ -20,7 +20,7 @@ public class SitesService extends ResponseService {
         if(sportId == null){
             return fail(50000,"参数是空");
         }
-        List<Sites> list = sitesDao.querySitesBySport(sportId);
+        List<Site> list = sitesDao.querySitesBySport(sportId);
         if(list == null){
             return fail(50006,"数据库查询失败");
         }
@@ -31,7 +31,7 @@ public class SitesService extends ResponseService {
         if(sportId == null){
             return fail(50000,"参数是空");
         }
-        List<Sites> list = sitesDao.querySitesBySportId(sportId);
+        List<Site> list = sitesDao.querySitesBySportId(sportId);
         if(list == null){
             return fail(50006,"数据库查询失败");
         }

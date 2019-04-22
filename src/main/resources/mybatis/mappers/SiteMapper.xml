@@ -11,7 +11,7 @@
        si.id siid,si.site_id sisite_id,site_name
     </sql>
 
-    <resultMap id="SubsiteAndSiteMap" type="com.lanjiao.gym.entity.Sites">
+    <resultMap id="SubsiteAndSiteMap" type="com.lanjiao.gym.entity.Site">
         <id column="siid" jdbcType="INTEGER" property="id"/>
         <result column="sisite_id" jdbcType="VARCHAR" property="siteId"/>
         <result column="site_name" jdbcType="VARCHAR" property="siteName"/>
@@ -26,21 +26,21 @@
         </collection>
     </resultMap>
 
-    <resultMap id="BaseResultMap" type="com.lanjiao.gym.entity.Sites">
+    <resultMap id="BaseResultMap" type="com.lanjiao.gym.entity.Site">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="site_id" jdbcType="VARCHAR" property="siteId"/>
         <result column="site_name" jdbcType="VARCHAR" property="siteName"/>
     </resultMap>
 
     <select id="querySitesBySport" parameterType="String" resultMap="BaseResultMap">
-    select DISTINCT(si.id),si.site_id,site_name from subsite su,sites si
+    select DISTINCT(si.id),si.site_id,site_name from subsite su,site si
     where su.sport_id= #{sportId} AND si.site_id=su.site_id
     </select>
 
     <select id="querySitesBySportId" parameterType="String" resultMap="SubsiteAndSiteMap">
         select
         <include refid="siteAndsonsite"/>
-        from subsite su,sites si
+        from subsite su,site si
         WHERE su.sport_id=#{sportId} AND si.site_id=su.site_id
     </select>
 

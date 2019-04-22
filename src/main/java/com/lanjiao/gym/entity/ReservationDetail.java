@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class ReservationDetails {
+public class ReservationDetail {
 
     private Integer id;
 

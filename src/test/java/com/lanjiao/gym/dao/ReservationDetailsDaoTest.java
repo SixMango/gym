@@ -1,7 +1,7 @@
 package com.lanjiao.gym.dao;
 
 import com.alibaba.fastjson.JSONObject;
-import com.lanjiao.gym.entity.ReservationDetails;
+import com.lanjiao.gym.entity.ReservationDetail;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class ReservationDetailsDaoTest {
     ReservationDetailsDao reservationDetailsDao;
     @Test
     public void queryReservationDetailsBySubsiteIdAndReservationDate() {
-        List<ReservationDetails> list = reservationDetailsDao.queryReservationDetailsBySubsiteIdAndReservationDate("#SD011","2019-04-14");
+        List<ReservationDetail> list = reservationDetailsDao.queryReservationDetailsBySubsiteIdAndReservationDate("#SD011","2019-04-14");
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("dudu",list);
         System.out.println(jsonObject);

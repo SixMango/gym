@@ -21,7 +21,7 @@ public class Subsite {
 
     private Double subsitePrice;
 
-    private List<ReservationDetails> reservationDetailsList;
+    private List<ReservationDetail> reservationDetailsList;
 
     private List<Time> timeList;
 
