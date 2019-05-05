@@ -74,9 +74,6 @@ public class WxUserUtil {
            return null;
        }
 
-       //将userInfo转换成user对象
-       System.out.println(userJson);
-
 
        WxUser wxuser = userJson.toJavaObject(WxUser.class);
 
@@ -122,7 +119,7 @@ public class WxUserUtil {
         try {
             //得到access_token 和用户 opneId
             userJson = HttpUtil.doGet(getUserinfo.replace("ACCESS_TOKEN",access_token).replace("OPENID",openid));
-            System.out.println(getUserinfo.replace("ACCESS_TOKEN",access_token).replace("OPENID",openid));
+
         } catch (IOException e) {
             log.info("微信获取网页userInfo出错");
         }
@@ -134,6 +131,9 @@ public class WxUserUtil {
     //通过token在redis中的到对象
     public WxUser getWxUserByToken(String token){
 
+        if(token==null || "".equals(token)){
+           return null;
+        }
         //将token的第三部分
         String[] ss = token.split("\\.");
         String redisKey = ss[ss.length-1];

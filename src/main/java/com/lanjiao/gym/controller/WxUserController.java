@@ -16,17 +16,9 @@ public class WxUserController {
     @Autowired
     WxUserService userService;
 
-    @GetMapping("/token")
-    public Response getWxAuthorizedToken(
-            @RequestParam(value = "code", required = false) String code) {
-
-        Response response = userService.getToken(code);
-
-        return response;
-    }
 
     @GetMapping("/userInfo")
-    public Response getWxAuthorizedUser(@RequestHeader(value = "Authorization", required = false) String token) {
+    public Response getWxAuthorizedUser(@RequestHeader(value = "Authorization") String token){
 
         Response response = userService.getWxUserByToken(token);
 
@@ -34,13 +26,11 @@ public class WxUserController {
     }
 
     @PostMapping("/login")
-    public Response getWxAuthorized(@RequestHeader(value = "Authorization", required = false) String token,
-            @RequestBody Map<String,String> map) {
+    public Response getWxAuthorized(@RequestBody Map<String,String> map){
 
         String code = map.get("code");
 
-        System.out.println("wxuserController code: "+code);
-        Response response = userService.getWxUserAndToken(token, code);
+        Response response = userService.getToken(code);
 
         return response;
     }

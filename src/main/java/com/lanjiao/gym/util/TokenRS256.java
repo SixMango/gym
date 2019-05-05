@@ -30,7 +30,7 @@ public class TokenRS256 {
         map.put("uid", uid);
         //生成时间
         map.put("sta", date.getTime());
-        //过期时间
+        //设置密码过期时间 1天
         map.put("exp", date.getTime() + (3600*1000*24));
         try {
             String token = TokenUtils.creatTokenRS256(map, rsaJWK);

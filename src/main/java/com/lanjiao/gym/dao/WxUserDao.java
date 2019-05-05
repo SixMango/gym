@@ -1,6 +1,5 @@
 package com.lanjiao.gym.dao;
 
-import com.lanjiao.gym.entity.User;
 import com.lanjiao.gym.entity.WxUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;

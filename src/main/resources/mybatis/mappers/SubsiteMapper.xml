@@ -19,44 +19,14 @@
         WHERE site_id= #{siteId} and sport_id=#{sportId}
     </select>
 
-    <sql id="subsiteAndRdAndTime">
-    su.id su_id,su.subsite_id su_subsite_id,site_id,sport_id,subsite_description,subsite_name,subsite_price,
-    rd.id rd_id,reservation_id,rd.subsite_id rd_subsite_id,reservation_date,rd.time_id rd_time_id,
-    t.id t_id,t.time_id t_time_id,begintime,endtime
-    </sql>
 
-    <select id="querySubsiteDetailBySiteIdAndSportId" resultMap="subsiteDetail">
+    <select id="querySubsiteBySubsiteId" resultMap="BaseResultMap">
         SELECT
-         <include refid="subsiteAndRdAndTime"/>
-         from subsite su LEFT JOIN reservation_detail rd
-          on su.subsite_id =rd.subsite_id
-	   LEFT JOIN time t
-	  on rd.time_id=t.time_id
-      WHERE site_id= #{siteId} and sport_id=#{sportId}
+         *
+        from subsite
+        WHERE subsite_id= #{subsiteId}
     </select>
 
-    <resultMap id="subsiteDetail" type="com.lanjiao.gym.entity.Subsite">
-        <id column="su_id" jdbcType="INTEGER" property="id"/>
-        <result column="su_subsite_id" jdbcType="VARCHAR" property="subsiteId"/>
-        <result column="site_id" jdbcType="VARCHAR" property="siteId"/>
-        <result column="sport_id" jdbcType="VARCHAR" property="sportId"/>
-        <result column="subsite_description" jdbcType="VARCHAR" property="subsiteDescription"/>
-        <result column="subsite_name" jdbcType="VARCHAR" property="subsiteName"/>
-        <result column="subsite_price" jdbcType="DOUBLE" property="subsitePrice"/>
-        <collection property="reservationDetailsList" ofType="com.lanjiao.gym.entity.ReservationDetail">
-            <id column="rd_id" jdbcType="INTEGER" property="id" />
-            <result column="reservation_id" jdbcType="VARCHAR" property="reservationId" />
-            <result column="rd_subsite_id" jdbcType="VARCHAR" property="subsiteId" />
-            <result column="reservation_date" jdbcType="DATE" property="reservationDate" />
-            <result column="rd_time_id" jdbcType="VARCHAR" property="timeId" />
-            <association property="time" javaType="com.lanjiao.gym.entity.Time">
-                <id column="t_id" jdbcType="INTEGER" property="id" />
-                <result column="t_time_id" jdbcType="VARCHAR" property="timeId" />
-                <result column="begintime" jdbcType="VARCHAR" property="begintime" />
-                <result column="endtime" jdbcType="VARCHAR" property="endtime" />
-            </association>
-        </collection>
 
-    </resultMap>
 
 </mapper>

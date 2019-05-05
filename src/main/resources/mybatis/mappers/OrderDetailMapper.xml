@@ -20,6 +20,43 @@
     where subsite_id = #{subsiteId} and detail_time = #{detailTime}
   </select>
 
+    <select id="queryOrderDetailBySubsiteIdAndDetailTimeAndTimeId"  resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from order_detail
+        where subsite_id = #{subsiteId} and detail_time = #{detailTime} and time_id = #{timeId}
+    </select>
+
+    <select id="queryOrderDetailByOrderId"  resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from order_detail
+        where order_id = #{orderId}
+    </select>
+
+    <select id="queryOrderDetail" parameterType="com.lanjiao.gym.entity.OrderDetail" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from order_detail
+        <where>
+            <if test="subsiteId!=null">
+               and subsite_id = #{subsiteId}
+            </if>
+            <if test="detailTime!=null">
+               and detail_time = #{detailTime}
+            </if>
+            <if test="orderId!=null">
+                and order_id = #{orderId}
+            </if>
+            <if test="timeId!=null">
+               and time_id = #{timeId}
+            </if>
+
+             and status = 1
+
+        </where>
+
+    </select>
 
   <insert id="insertOrderDetail" parameterType="com.lanjiao.gym.entity.OrderDetail">
      INSERT  INTO
@@ -28,4 +65,12 @@
      values(
      #{orderId},#{subsiteId},#{detailTime},#{timeId},#{siteId},#{sportId})
   </insert>
+
+    <update id="updateOrderDetail" parameterType="com.lanjiao.gym.entity.OrderDetail">
+        update order_detail
+           set
+            status=#{status}
+        where order_id=#{orderId}
+
+    </update>
 </mapper>

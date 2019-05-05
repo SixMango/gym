@@ -1,6 +1,8 @@
 package com.lanjiao.gym.controller;
 
 import com.lanjiao.gym.common.Response;
+import com.lanjiao.gym.entity.WxUser;
+import com.lanjiao.gym.service.OrderService;
 import com.lanjiao.gym.service.SiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,11 @@ public class SiteController {
 
     @Autowired
     SiteService siteService;
+
+    @Autowired
+    OrderService orderService;
+
+
     @RequestMapping(value = "/querySitesBySport")
     public Response querySitesBySport(@RequestBody Map<String, Object> data) {
         String sportId = (String) data.get("sportId");
@@ -28,4 +35,5 @@ public class SiteController {
         Response response = siteService.querySitesBySportId(sportId);
         return response;
     }
+
 }

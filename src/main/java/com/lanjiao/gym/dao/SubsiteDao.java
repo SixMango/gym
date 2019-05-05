@@ -12,6 +12,6 @@ import java.util.List;
 @Component
 public interface SubsiteDao {
 
-    List<Subsite> querySubsiteDetailBySiteIdAndSportId(@Param("sportId")String sportId,@Param("siteId")String siteId);
     List<Subsite> querySubsiteBySiteIdAndSportId(@Param("sportId")String sportId,@Param("siteId")String siteId);
+    List<Subsite> querySubsiteBySubsiteId(@Param("subsiteId")String subsiteId);
 }

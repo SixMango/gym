@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lanjiao.gym.dao.OrderDao">
-  <resultMap id="BaseResultMap" type="com.lanjiao.gym.entity.Order">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
-    <result column="user_id" jdbcType="VARCHAR" property="userId" />
-    <result column="order_price" jdbcType="INTEGER" property="orderPrice" />
-    <result column="order_date" jdbcType="DATE" property="orderDate" />
-    <result column="order_status" jdbcType="INTEGER" property="orderStatus" />
-    <result column="order_check" jdbcType="INTEGER" property="orderCheck" />
-    <result column="order_free" jdbcType="INTEGER" property="orderFree" />
-    <result column="order_remake" jdbcType="VARCHAR" property="orderRemake" />
-    <result column="order_faceback" jdbcType="VARCHAR" property="order_Faceback" />
-  </resultMap>
-  <sql id="Base_Column_List">
+    <resultMap id="BaseResultMap" type="com.lanjiao.gym.entity.Order">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="order_id" jdbcType="VARCHAR" property="orderId"/>
+        <result column="user_id" jdbcType="VARCHAR" property="userId"/>
+        <result column="order_price" jdbcType="INTEGER" property="orderPrice"/>
+        <result column="order_date" jdbcType="TIMESTAMP" property="orderDate"/>
+        <result column="order_status" jdbcType="INTEGER" property="orderStatus"/>
+        <result column="order_check" jdbcType="INTEGER" property="orderCheck"/>
+        <result column="order_free" jdbcType="INTEGER" property="orderFree"/>
+        <result column="order_remake" jdbcType="VARCHAR" property="orderRemake"/>
+        <result column="order_faceback" jdbcType="VARCHAR" property="orderFaceback"/>
+        <result column="sport_name" jdbcType="VARCHAR" property="sportName"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
      id,order_id,user_id,order_price,order_date,order_status,order_check,
      order_free,order_remake,order_faceback
   </sql>
 
-  <insert id="insertOrder" parameterType="com.lanjiao.gym.entity.Order">
+    <sql id="queryOrder">
+     o.id,o.order_id,user_id,order_price,order_date,order_status,order_check,
+     order_free,order_remake,order_faceback,s.sport_name
+  </sql>
+
+    <insert id="insertOrder" parameterType="com.lanjiao.gym.entity.Order">
     INSERT  INTO
      orders (order_id,user_id,order_price,order_date,order_status,order_check,
      order_free,order_remake,order_faceback)
@@ -27,4 +34,50 @@
      #{orderCheck},#{orderFree},#{orderRemake},#{orderFaceback})
   </insert>
 
+
+    <select id="queryOrder" parameterType="com.lanjiao.gym.entity.Order" resultMap="BaseResultMap">
+        select
+        <include refid="queryOrder"/>
+        from
+        ((order_detail od left JOIN sport s ON(od.sport_id = s.sport_id))
+        LEFT JOIN
+        orders o  ON(o.order_id = od.order_id))
+        <where>
+            <if test="listStatus!=null">
+                order_status in
+                <foreach item="item" index="index" collection="listStatus" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="userId!=null">
+               and user_id = #{userId}
+            </if>
+        </where>
+        ORDER BY order_date desc
+    </select>
+
+    <select id="queryOrderByOrderId" parameterType="com.lanjiao.gym.entity.Order" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from orders
+        <where>
+            <if test="orderId!=null">
+                and order_id = #{orderId}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateOrder" parameterType="com.lanjiao.gym.entity.Order">
+
+        update orders
+            <trim prefix="set" suffixOverrides=",">
+
+                <if test="orderCheck!=null">order_check=#{orderCheck},</if>
+                <if test="orderFree!=null">order_free=#{orderFree},</if>
+                <if test="orderRemake!=null">order_remake=#{orderRemake},</if>
+                <if test="orderStatus!=null">order_status=#{orderStatus},</if>
+
+            </trim>
+        where order_id=#{orderId}
+    </update>
 </mapper>

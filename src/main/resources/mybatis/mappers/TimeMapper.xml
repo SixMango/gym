@@ -18,4 +18,10 @@
     from time
   </select>
 
+  <select id="queryTimeByTimeId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from time where  time_id = #{timeId}
+  </select>
+
 </mapper>

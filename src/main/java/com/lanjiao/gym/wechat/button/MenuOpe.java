@@ -17,7 +17,6 @@ public class MenuOpe {
 	"appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&"+
 			"scope=snsapi_userinfo&state=STATE#wechat_redirect";
 	public void createMenu() {
-		WxMenuUtil wxMenuUtil = new WxMenuUtil();
 		// 菜单
 
 		ViewButton button11 = new ViewButton();
